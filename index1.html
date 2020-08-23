@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./vue.js"></script>
+    <script>
+        window.onload = function () {
+            var vm = new Vue({
+                el: ".box",
+                data: {
+                    content: "我是内容",
+                    path: "http://www.baidu.com",
+                    count: 0
+                },
+                methods: {
+                    add_one: function () {
+                        alert("哈哈哈哈哈哈")
+                    },
+                    fun_count: function () {
+                        vm.count += 1
+                        
+                    }
+
+                }
+            });
+        }
+    </script>
+</head>
+
+<body>
+    <div class="box">
+        <div>{{content}}</div>
+        <a :href="path">百度</a>
+        <br>
+        <button @click="add_one">按钮</button>
+        <br>
+        <button @click="fun_count">{{count}}</button>
+    </div>
+
+</body>
+
+</html>

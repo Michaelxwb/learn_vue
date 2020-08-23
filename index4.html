@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="vue.js"></script>
+    <script>
+        window.onload = function () {
+            var vm = new Vue({
+                el: ".app",
+                data: {
+                    inputContent: "",
+                    longText: "",
+                    gender: "男",
+                    like: [],
+                    city: "深圳"
+                }
+            })
+        }
+    </script>
+</head>
+
+<body>
+    <div class="app">
+        <input v-model="inputContent" type="text">
+        <p>{{inputContent}}</p>
+
+        <textarea v-model="longText" name="" id="" cols="30" rows="10"></textarea>
+        <p>{{longText}}</p>
+
+        <input v-model="gender" type="radio" name="" id="" value="男">男
+        <input v-model="gender" type="radio" name="" id="" value="女">女
+        <p>{{gender}}</p>
+
+        <input v-model="like" type="checkbox" name="" id="" value="篮球">篮球
+        <input v-model="like" type="checkbox" name="" id="" value="足球">足球
+        <input v-model="like" type="checkbox" name="" id="" value="乒乓球">乒乓球
+        <input v-model="like" type="checkbox" name="" id="" value="高尔夫">高尔夫
+        <p>{{like}}</p>
+
+        <select v-model="city" name="" id="">
+            <option value="深圳">深圳</option>
+            <option value="上海">上海</option>
+            <option value="长沙">长沙</option>
+            <option value="成都">成都</option>
+        </select>
+        <p>{{city}}</p>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style type="text/css">
+		.app{
+			width:600px;
+			margin:50px auto 0;
+		}
+		.inputtxt{
+			width:550px;
+			height:30px;
+			border:1px solid #ccc;
+			padding:0px;
+			text-indent:10px;			
+		}
+		.inputbtn{
+			width:40px;
+			height:32px;
+			padding:0px;
+			border:1px solid #ccc;
+		}
+		.list{
+			margin:0;
+			padding:0;
+			list-style:none;
+			margin-top:20px;
+		}
+		.list li{
+			height:40px;
+			line-height:40px;
+			border-bottom:1px solid #ccc;
+		}
+
+		.list li span{
+			float:left;
+		}
+
+		.list li a{
+			float:right;
+			text-decoration:none;
+			margin:0 10px;
+		}
+	</style>
+    <script src="vue.js"></script>
+    <script>
+        window.onload = function () {
+            var vm = new Vue({
+                el: ".app",
+                data: {
+                    inuptContent: "",
+                    like_list: ["学习C++", "学习Java", "学习Python"],
+                },
+                methods: {
+                    add: function () {
+                        if (this.inuptContent == "") {
+                            alert("内容不能为空")
+                            return
+
+                        }
+                        this.like_list.push(this.inuptContent)
+                        this.inuptContent = ""
+                    },
+                    deletefun: function (index) {
+                        this.like_list.splice(index, 1)
+                    },
+                    up: function (index) {
+                        if (index != 0) {
+                            this.like_list[index] = this.like_list.splice(index - 1, 1, this.like_list[index])[0];
+                        } else {
+                            this.like_list.push(this.like_list.shift());
+                        }
+
+                    },
+                    down: function (index) {
+                        if (index != this.like_list.length - 1) {
+
+                            this.like_list[index] = this.like_list.splice(index + 1, 1, this.like_list[index])[0];
+
+                        } else {
+
+                            this.like_list.unshift(this.like_list.splice(index, 1)[0]);
+
+                        }
+                    },
+                },
+            })
+        }
+    </script>
+</head>
+
+<body>
+    <div class="app">
+        <input type="text" v-model="inuptContent" class="inputtxt">
+        <button @click="add" class="inputbtn">新增</button>
+        <ul v-for="(like, index) in like_list" class="list">
+            <li>
+                <span>{{like}}</span>
+                <a href="javascript:;" class="up" @click="up(index)"> 上移</a>
+                <a href="javascript:;" class="down" @click="down(index)"> 下移</a>
+                <a href="javascript:;" class="delete" @click="deletefun(index)"> 删除</a>
+            </li>
+        </ul>
+
+    </div>
+
+</body>
+
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>条件渲染</title>
+    <script src="vue.js"></script>
+    <script>
+        window.onload = function () {
+            var vm = new Vue({
+                el: ".app",
+                data: {
+                    num: 8,
+                    age: 17,
+                    show: true
+                }
+
+            })
+        }
+
+
+    </script>
+</head>
+
+<body>
+    <div class="app">
+        <div v-if="num>10">{{num}}</div>
+
+        <div v-if="age>=22">合法结婚年龄</div>
+        <div v-else-if="age>=18">刚成年</div>
+        <div v-else>未成年</div>
+
+        <div v-show="is_show">show</div>
+    </div>
+
+</body>
+
+</html>
